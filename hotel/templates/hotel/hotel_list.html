@@ -1,0 +1,44 @@
+
+{% extends 'hotel/base.html' %}
+
+{% block title %}Our Locations - Orchid Hotel{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-4">Our Hotel Locations</h1>
+            <p class="lead">Experience luxury hospitality at our various locations</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        {% for hotel in hotels %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">{{ hotel.name }}</h3>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ hotel.tagline }}</h6>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt me-2"></i>{{ hotel.address|truncatewords:15 }}
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-phone me-2"></i>{{ hotel.phone|truncatewords:3 }}
+                    </p>
+                    <a href="{% url 'home_with_slug' hotel.slug %}" class="btn btn-primary mt-3">
+                        Visit {{ hotel.name }} <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <div class="alert alert-info">
+                <h4>No hotels available at the moment</h4>
+                <p>Please check back later or contact our customer service.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
