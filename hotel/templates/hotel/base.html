@@ -2822,6 +2822,418 @@
             padding: 10px;
             border-radius: 5px;
         }
+
+        /* Update the gradient for orange buttons to be more orange-focused */
+.nav-book-btn {
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    color: white;
+    border: none;
+    font-weight: 600;
+    margin-left: 20px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.nav-book-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.nav-book-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.nav-book-btn:hover::before {
+    left: 0;
+}
+
+/* Update book-now-room button */
+.book-now-room {
+    height: 3rem;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    font-weight: 600;
+    padding: 0 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.book-now-room::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.book-now-room:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.book-now-room:hover::before {
+    left: 0;
+}
+
+/* Update wedding-book-btn */
+.wedding-book-btn {
+    height: 3rem;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    font-weight: 600;
+    padding: 0 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.wedding-book-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.wedding-book-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.wedding-book-btn:hover::before {
+    left: 0;
+}
+
+/* Update banquet-book-btn */
+.banquet-book-btn {
+    height: 3rem;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    font-weight: 600;
+    padding: 0 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.banquet-book-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.banquet-book-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.banquet-book-btn:hover::before {
+    left: 0;
+}
+
+/* Update restaurant-book-btn */
+.restaurant-book-btn {
+    height: 3rem;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    font-weight: 600;
+    padding: 0 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.restaurant-book-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.restaurant-book-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.restaurant-book-btn:hover::before {
+    left: 0;
+}
+
+/* Update contact-support-btn in FAQ section */
+.contact-support-btn {
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.contact-support-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.contact-support-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.contact-support-btn:hover::before {
+    left: 0;
+}
+
+/* Update newsletter-btn in footer */
+.newsletter-btn {
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.newsletter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.newsletter-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.newsletter-btn:hover::before {
+    left: 0;
+}
+
+/* Update consent-accept button */
+#consent-accept {
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#consent-accept::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+#consent-accept:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+#consent-accept:hover::before {
+    left: 0;
+}
+
+/* Update blog-read-btn */
+.blog-read-btn {
+    color: #ff7e5f;
+    font-weight: 600;
+    padding: 0;
+    background: none;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.blog-read-btn:hover {
+    color: #ffa500;
+    transform: translateX(5px);
+}
+
+/* Update visit-hotel-btn in hotel dropdown */
+.visit-hotel-btn {
+    background: linear-gradient(to right, #ff7e5f, #ffa500, #ff8c00);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.visit-hotel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ff7e5f);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.visit-hotel-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.4);
+}
+
+.visit-hotel-btn:hover::before {
+    left: 0;
+}
+
+/* Add a subtle pulse animation for attention */
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 126, 95, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 126, 95, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 126, 95, 0);
+    }
+}
+
+/* Apply pulse animation to specific buttons on page load */
+.nav-book-btn, 
+.book-now-room,
+.visit-hotel-btn {
+    animation: pulse-orange 2s infinite;
+}
+
+/* Disable pulse after first interaction */
+.nav-book-btn:active,
+.book-now-room:active,
+.visit-hotel-btn:active,
+.nav-book-btn:focus,
+.book-now-room:focus,
+.visit-hotel-btn:focus {
+    animation: none;
+}
+
+/* Responsive adjustments for the gradient animation */
+@media (max-width: 768px) {
+    /* Slightly reduce the hover effect on mobile for better performance */
+    .nav-book-btn:hover,
+    .book-now-room:hover,
+    .wedding-book-btn:hover,
+    .banquet-book-btn:hover,
+    .restaurant-book-btn:hover,
+    .contact-support-btn:hover,
+    .newsletter-btn:hover,
+    .visit-hotel-btn:hover {
+        transform: translateY(-2px);
+    }
+    
+    /* Reduce shadow intensity on mobile */
+    .nav-book-btn:hover,
+    .book-now-room:hover,
+    .wedding-book-btn:hover,
+    .banquet-book-btn:hover,
+    .restaurant-book-btn:hover,
+    .contact-support-btn:hover,
+    .newsletter-btn:hover,
+    .visit-hotel-btn:hover {
+        box-shadow: 0 5px 15px rgba(255, 126, 95, 0.3);
+    }
+    
+    /* Disable pulse animation on mobile for better performance */
+    .nav-book-btn,
+    .book-now-room,
+    .visit-hotel-btn {
+        animation: none;
+    }
+}
     </style>
 
     {% block extra_css %}{% endblock %}
