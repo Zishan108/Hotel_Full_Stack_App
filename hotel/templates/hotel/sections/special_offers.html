@@ -1,0 +1,15 @@
+
+<div id="special-offers">
+    <div class="special-offers-container container">
+        <h1 class="text-center">Special Offers Inside</h1>
+        <div class="row mt-5">
+            {% for offer in special_offers %}
+            <div class="col-md-3 col-6 mb-4">
+                <div class="offer-image-container">
+                    <img src="{{ offer.image.url }}" class="img-fluid offer-image" alt="{{ offer.title }}" loading="lazy">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

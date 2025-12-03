@@ -1,263 +1,37 @@
-<!-- hotel/templates/hotel/index.html -->
+
 {% extends 'hotel/base.html' %}
-{% load static %}
 
 {% block content %}
-<!-- Carousel (Dynamic) -->
-<div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-        {% for slide in carousel_slides %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{{ slide.image.url }}" class="d-block w-100" alt="{{ slide.title }}">
-        </div>
-        {% endfor %}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+    <!-- Carousel Section -->
+    {% include 'hotel/sections/carousel.html' %}
 
-<!-- Main Info (Dynamic) -->
-<div class="text-center my-3 button w-100 container w-100 d-flex justify-content-center align-items-center flex-nowrap"
-    id="main-info">
-    <div class="text-center my-3 button w-50">
-        <h1 class="main-title capitalize">{{ main_info.title }} <br>
-            <span class="d-inline-block ecohotel-text" id="lgtxt">{{ main_info.highlighted_text }}</span>
-        </h1>
-        <p>{{ main_info.description }}</p>
-    </div>
-</div>
+    <!-- Main Info Section -->
+    {% include 'hotel/sections/main_info.html' %}
 
-<!-- General Cards (Dynamic) -->
-<div class="container w-100 d-flex justify-content-center align-items-center flex-nowrap">
-    {% for card in general_cards %}
-    <div class="card" id="card{{ forloop.counter }}">
-        <img src="{{ card.image.url }}" class="img-fluid" alt="{{ card.title }}">
-    </div>
-    {% endfor %}
-</div>
+    <!-- General Cards Section -->
+    {% include 'hotel/sections/general_cards.html' %}
 
-<!-- Gallery (Dynamic) -->
-<div id="gallery">
-    <h1 class="ml-5 d-inline">Gallery</h1>
-    <button class="btn px-4 py-2 btn-outline-secondary text-dark rounded custom-but-h">Explore More</button>
-    <div class="container w-100 d-flex justify-content-center align-items-center flex-nowrap">
-        {% for card in gallery_cards %}
-        <div class="card" id="gallery-card{{ forloop.counter }}">
-            <img src="{{ card.image.url }}" class="img-fluid" alt="{{ card.title }}">
-        </div>
-        {% endfor %}
-    </div>
-</div>
+    <!-- Gallery Section -->
+    {% include 'hotel/sections/gallery.html' %}
 
-<!-- Rooms and Suites (Dynamic) -->
-<div id="rooms-and-suites">
-    <h1 class="ml-5 d-inline">Rooms And Suites</h1>
-    <div class="buttons-container">
-        <button class="btn px-4 py-2 btn-outline-secondary text-dark rounded custom-but-h" id="room-but">Explore More</button>
-        <button class="btn px-4 py-2 rounded book-now-room" id="book-now-room">Book Now</button>
-    </div>
-    <div class="container w-100 d-flex justify-content-center align-items-center flex-nowrap">
-        {% for room in room_types %}
-        <div class="card" id="room-card{{ forloop.counter }}">
-            <img src="{{ room.image.url }}" class="img-fluid" alt="{{ room.name }}">
-            <h1 class="mt-5">{{ room.name }}</h1>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+    <!-- Rooms and Suites Section -->
+    {% include 'hotel/sections/rooms_and_suites.html' %}
 
-<!-- Wedding Venues (Dynamic) -->
-<div id="wedding-venues">
-    <div class="wedding-container container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                {% if wedding_section.image1 %}
-                <img src="{{ wedding_section.image1.url }}" class="img-fluid wedding-img" alt="Wedding Venue">
-                {% endif %}
-            </div>
-            <div class="col-md-6 wedding-content">
-                <h1>{{ wedding_section.title }}</h1>
-                <p>{{ wedding_section.description }}</p>
-                <div class="wedding-buttons">
-                    <button class="btn px-4 py-2 btn-outline-secondary text-dark rounded wedding-enquire-btn">{{ wedding_section.button1_text }}</button>
-                    <button class="btn px-4 py-2 rounded book-now-room wedding-book-btn">{{ wedding_section.button2_text }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- Wedding Venues Section -->
+    {% include 'hotel/sections/wedding.html' %}
 
-<!-- Banquet Halls (Dynamic) -->
-<div id="banquet-halls">
-    <div class="banquet-container container">
-        <div class="row align-items-center">
-            <div class="col-md-4">
-                {% if banquet_section.image1 %}
-                <img src="{{ banquet_section.image1.url }}" class="img-fluid banquet-img" alt="Banquet Hall">
-                {% endif %}
-            </div>
-            <div class="col-md-4 banquet-content">
-                <h1>{{ banquet_section.title }}</h1>
-                <p>{{ banquet_section.description }}</p>
-                <div class="banquet-buttons">
-                    <button class="btn px-4 py-2 btn-outline-secondary text-dark rounded banquet-enquire-btn">{{ banquet_section.button1_text }}</button>
-                    <button class="btn px-4 py-2 rounded book-now-room banquet-book-btn">{{ banquet_section.button2_text }}</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                {% if banquet_section.image2 %}
-                <img src="{{ banquet_section.image2.url }}" class="img-fluid banquet-img" alt="Banquet Hall Interior">
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- Banquet Halls Section -->
+    {% include 'hotel/sections/banquet.html' %}
 
-<!-- Restaurant (Dynamic) -->
-<div id="restaurant">
-    <div class="restaurant-container container">
-        <div class="row align-items-center">
-            <div class="col-md-6 restaurant-content">
-                <h1>{{ restaurant_section.title }}</h1>
-                <p>{{ restaurant_section.description }}</p>
-                <div class="restaurant-buttons">
-                    <button class="btn px-4 py-2 btn-outline-light rounded restaurant-explore-btn">{{ restaurant_section.button1_text }}</button>
-                    <button class="btn px-4 py-2 rounded restaurant-book-btn">{{ restaurant_section.button2_text }}</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="restaurant-images">
-                    <div class="row">
-                        {% if restaurant_section.image1 %}
-                        <div class="col-12">
-                            <img src="{{ restaurant_section.image1.url }}" class="img-fluid restaurant-img" alt="Restaurant Dining">
-                        </div>
-                        {% endif %}
-                        {% if restaurant_section.image2 %}
-                        <div class="col-12 mt-5">
-                            <img src="{{ restaurant_section.image2.url }}" class="img-fluid restaurant-img" alt="Restaurant Interior">
-                        </div>
-                        {% endif %}
-                        {% if restaurant_section.image3 %}
-                        <div class="col-12 mt-5">
-                            <img src="{{ restaurant_section.image3.url }}" class="img-fluid restaurant-img" alt="Restaurant Food">
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- Restaurant Section -->
+    {% include 'hotel/sections/restaurant.html' %}
 
-<!-- Special Offers (Dynamic) -->
-<div id="special-offers">
-    <div class="special-offers-container container">
-        <h1 class="text-center">Special Offers Inside</h1>
-        <div class="row mt-5">
-            {% for offer in special_offers %}
-            <div class="col-md-3 col-6 mb-4">
-                <div class="offer-image-container">
-                    <img src="{{ offer.image.url }}" class="img-fluid offer-image" alt="{{ offer.title }}">
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+    <!-- Special Offers Section -->
+    {% include 'hotel/sections/special_offers.html' %}
 
-<!-- FAQ Section (Dynamic) -->
-<div id="faq-section">
-    <div class="faq-container container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <h1 class="faq-title">{{ faq_section.title|default:"FAQs" }}</h1>
-                <div class="accordion" id="faqAccordion">
-                    {% for faq in faqs %}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
-                                {{ faq.question }}
-                            </button>
-                        </h2>
-                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}"
-                            data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                {{ faq.answer }}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 d-flex align-items-center justify-content-center">
-                {% if faq_section and faq_section.image1 %}
-                <div class="faq-image-container">
-                    <img src="{{ faq_section.image1.url }}" class="img-fluid faq-image" alt="Hotel FAQ">
-                    {% if faq_section.overlay_title or faq_section.overlay_text %}
-                    <div class="faq-image-overlay">
-                        {% if faq_section.overlay_title %}
-                        <h3>{{ faq_section.overlay_title }}</h3>
-                        {% endif %}
-                        {% if faq_section.overlay_text %}
-                        <p>{{ faq_section.overlay_text }}</p>
-                        {% endif %}
-                        {% if faq_section.overlay_button_text %}
-                        <button class="contact-support-btn">{{ faq_section.overlay_button_text }}</button>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                </div>
-                {% else %}
-                <!-- Fallback if no FAQ section image is set -->
-                <div class="faq-image-container">
-                    <img src="{% static 'images/faq-image.jpg' %}" class="img-fluid faq-image" alt="Hotel FAQ">
-                    <div class="faq-image-overlay">
-                        <h3>Need More Help?</h3>
-                        <p>Our team is available 24/7 to assist you with any queries.</p>
-                        <button class="contact-support-btn">Contact Support</button>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- FAQ Section -->
+    {% include 'hotel/sections/faq.html' %}
 
-<!-- Blogs Section (Dynamic) -->
-<div id="blogs-section">
-    <div class="blogs-container container">
-        <div class="blogs-header d-flex justify-content-between align-items-center mb-5">
-            <h1 class="blogs-title">Blogs</h1>
-            <button class="btn btn-outline-secondary blogs-enquire-btn">Enquire Now</button>
-        </div>
-        <div class="row">
-            {% for blog in blog_posts %}
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="blog-card">
-                    <div class="blog-image-container">
-                        <img src="{{ blog.image.url }}" class="img-fluid blog-image" alt="{{ blog.title }}">
-                        <span class="blog-category">{{ blog.category }}</span>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-headline">{{ blog.title }}</h3>
-                        <p class="blog-excerpt">{{ blog.excerpt }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="blog-date">{{ blog.published_date|date:"F d, Y" }}</span>
-                            <button class="btn blog-read-btn">Read More →</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+    <!-- Blogs Section -->
+    {% include 'hotel/sections/blogs.html' %}
 {% endblock %}

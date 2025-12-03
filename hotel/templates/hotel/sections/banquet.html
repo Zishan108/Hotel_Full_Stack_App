@@ -1,0 +1,25 @@
+
+<div id="banquet-halls">
+    <div class="banquet-container container">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                {% if banquet_section.image1 %}
+                <img src="{{ banquet_section.image1.url }}" class="img-fluid banquet-img" alt="Banquet Hall" loading="lazy">
+                {% endif %}
+            </div>
+            <div class="col-md-4 banquet-content">
+                <h1>{{ banquet_section.title }}</h1>
+                <p>{{ banquet_section.description }}</p>
+                <div class="banquet-buttons">
+                    <button class="btn px-4 py-2 btn-outline-secondary banquet-enquire-btn">{{ banquet_section.button1_text }}</button>
+                    <button class="btn px-4 py-2 book-now-room banquet-book-btn">{{ banquet_section.button2_text }}</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {% if banquet_section.image2 %}
+                <img src="{{ banquet_section.image2.url }}" class="img-fluid banquet-img" alt="Banquet Hall Interior" loading="lazy">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+{% load static %}
+<div id="faq-section">
+    <div class="faq-container container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <h1 class="faq-title">{{ faq_section.title|default:"FAQs" }}</h1>
+                <div class="accordion" id="faqAccordion">
+                    {% for faq in faqs %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                                {{ faq.question }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 d-flex align-items-center justify-content-center">
+                {% if faq_section and faq_section.image1 %}
+                <div class="faq-image-container">
+                    <img src="{{ faq_section.image1.url }}" class="img-fluid faq-image" alt="Hotel FAQ" loading="lazy">
+                    {% if faq_section.overlay_title or faq_section.overlay_text %}
+                    <div class="faq-image-overlay">
+                        {% if faq_section.overlay_title %}
+                        <h3>{{ faq_section.overlay_title }}</h3>
+                        {% endif %}
+                        {% if faq_section.overlay_text %}
+                        <p>{{ faq_section.overlay_text }}</p>
+                        {% endif %}
+                        {% if faq_section.overlay_button_text %}
+                        <button class="contact-support-btn">{{ faq_section.overlay_button_text }}</button>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <!-- Fallback if no FAQ section image is set -->
+                <div class="faq-image-container">
+                    <img src="{% static 'images/faq-image.jpg' %}" class="img-fluid faq-image" alt="Hotel FAQ" loading="lazy">
+                    <div class="faq-image-overlay">
+                        <h3>Need More Help?</h3>
+                        <p>Our team is available 24/7 to assist you with any queries.</p>
+                        <button class="contact-support-btn">Contact Support</button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

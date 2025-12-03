@@ -1,0 +1,140 @@
+<div id="rooms-and-suites">
+    <h1 class="ml-5 d-inline">Rooms And Suites</h1>
+    <div class="buttons-container">
+        <button class="btn px-4 py-2 btn-outline-secondary custom-but-h" id="room-but">Explore More</button>
+        <button class="btn px-4 py-2 book-now-room" id="book-now-room">Book Now</button>
+    </div>
+    
+    <!-- Desktop Layout (hidden on mobile) -->
+    <div class="container w-100 d-none d-lg-flex justify-content-center align-items-center flex-nowrap desktop-rooms">
+        {% for room in room_types %}
+        <div class="card" id="room-card{{ forloop.counter }}">
+            <img src="{{ room.image.url }}" class="img-fluid" alt="{{ room.name }}" loading="lazy">
+            <h1 class="mt-5">{{ room.name }}</h1>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Mobile Carousel (visible only on mobile) -->
+    <div id="mobileRoomsCarousel" class="carousel slide d-lg-none" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for room in room_types %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="room-mobile-card mx-3">
+                    <img src="{{ room.image.url }}" class="d-block w-100 img-fluid rounded" alt="{{ room.name }}" loading="lazy" style="height: 300px; object-fit: cover;">
+                    <div class="room-card-content text-center py-4">
+                        <h2>{{ room.name }}</h2>
+                        <div class="mt-3">
+                            <button class="btn btn-outline-secondary me-2">View Details</button>
+                            <button class="btn book-now-room">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if room_types|length > 1 %}
+        <button class="carousel-control-prev" type="button" data-bs-target="#mobileRoomsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mobileRoomsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators position-relative mt-3">
+            {% for room in room_types %}
+            <button type="button" data-bs-target="#mobileRoomsCarousel" data-bs-slide-to="{{ forloop.counter0 }}" 
+                    class="{% if forloop.first %}active{% endif %}" 
+                    aria-label="Slide {{ forloop.counter }}">
+            </button>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    /* Mobile Carousel Styles */
+    #mobileRoomsCarousel {
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+    
+    .room-mobile-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    
+    .carousel-indicators {
+        bottom: -40px;
+    }
+    
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #5a1f5a;
+        opacity: 0.3;
+        margin: 0 5px;
+        border: none;
+    }
+    
+    .carousel-indicators button.active {
+        opacity: 1;
+        background-color: #ff7e5f;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        background: rgba(90, 31, 90, 0.8);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.8;
+    }
+    
+    .carousel-control-prev {
+        left: 10px;
+    }
+    
+    .carousel-control-next {
+        right: 10px;
+    }
+    
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        background: #5a1f5a;
+        opacity: 1;
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+        .room-card-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .room-card-content .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        #mobileRoomsCarousel {
+            padding: 0 10px;
+        }
+        
+        .room-mobile-card img {
+            height: 250px;
+        }
+    }
+</style>

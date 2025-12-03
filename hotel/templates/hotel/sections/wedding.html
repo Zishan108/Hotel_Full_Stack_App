@@ -1,0 +1,20 @@
+
+<div id="wedding-venues">
+    <div class="wedding-container container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                {% if wedding_section.image1 %}
+                <img src="{{ wedding_section.image1.url }}" class="img-fluid wedding-img" alt="Wedding Venue" loading="lazy">
+                {% endif %}
+            </div>
+            <div class="col-md-6 wedding-content">
+                <h1>{{ wedding_section.title }}</h1>
+                <p>{{ wedding_section.description }}</p>
+                <div class="wedding-buttons">
+                    <button class="btn px-4 py-2 btn-outline-secondary wedding-enquire-btn">{{ wedding_section.button1_text }}</button>
+                    <button class="btn px-4 py-2 book-now-room wedding-book-btn">{{ wedding_section.button2_text }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

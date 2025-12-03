@@ -1,0 +1,29 @@
+<!-- hotel/templates/hotel/sections/blogs.html -->
+<div id="blogs-section">
+    <div class="blogs-container container">
+        <div class="blogs-header d-flex justify-content-between align-items-center mb-5">
+            <h1 class="blogs-title">Blogs</h1>
+            <button class="btn btn-outline-secondary blogs-enquire-btn">Enquire Now</button>
+        </div>
+        <div class="row">
+            {% for blog in blog_posts %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="blog-card">
+                    <div class="blog-image-container">
+                        <img src="{{ blog.image.url }}" class="img-fluid blog-image" alt="{{ blog.title }}" loading="lazy">
+                        <span class="blog-category">{{ blog.category }}</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-headline">{{ blog.title }}</h3>
+                        <p class="blog-excerpt">{{ blog.excerpt }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="blog-date">{{ blog.published_date|date:"F d, Y" }}</span>
+                            <button class="btn blog-read-btn">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+
+<div class="container w-100 d-flex justify-content-center align-items-center flex-nowrap">
+    {% for card in general_cards %}
+    <div class="card" id="card{{ forloop.counter }}">
+        <img src="{{ card.image.url }}" class="img-fluid" alt="{{ card.title }}" loading="lazy">
+    </div>
+    {% endfor %}
+</div>

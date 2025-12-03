@@ -1,8 +1,10 @@
-# models.py
+
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from PIL import Image
+import os
 
 class Hotel(models.Model):
     name = models.CharField(max_length=200)
@@ -77,6 +79,16 @@ class Card(models.Model):
     button_text = models.CharField(max_length=50, blank=True)
     button_link = models.CharField(max_length=200, blank=True)
     
+    def get_image_dimensions(self):
+        """Get image width and height for proper lazy loading"""
+        if self.image:
+            try:
+                with Image.open(self.image.path) as img:
+                    return img.size  # returns (width, height)
+            except:
+                return (400, 300)  # default dimensions
+        return (400, 300)
+
     class Meta:
         ordering = ['order']
     

@@ -1,0 +1,40 @@
+
+<div class="gallery-container">
+    <h1 class="ml-5" style="margin-left:47px;">Gallery</h1>
+  <!-- Desktop View -->
+  <div class="d-none d-md-block">
+    <div class="container w-100 d-flex justify-content-center align-items-center flex-nowrap">
+      {% for card in gallery_cards %}
+      <div class="card" id="gallery-card{{ forloop.counter }}">
+        <img src="{{ card.image.url }}" class="img-fluid" alt="{{ card.title }}" loading="lazy">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <!-- Mobile Carousel -->
+  <div class="d-block d-md-none">
+    <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {% for card in gallery_cards %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="gallery-mobile-card">
+            <img src="{{ card.image.url }}" class="d-block w-100" alt="{{ card.title }}">
+            <div class="carousel-caption">
+              <h5>{{ card.title }}</h5>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>

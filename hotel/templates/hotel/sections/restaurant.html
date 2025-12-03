@@ -1,0 +1,56 @@
+<style> 
+
+.restaurant-images .row {
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-images .col-4 {
+    display: flex;
+    justify-content: center;
+}
+
+.restaurant-img {
+    transition: transform 0.3s ease;
+}
+
+.restaurant-img:hover {
+    transform: scale(1.05);
+}
+
+</style>
+<div id="restaurant">
+    <div class="restaurant-container container">
+        <div class="row align-items-center">
+            <div class="col-md-4 restaurant-content">
+                <h1>{{ restaurant_section.title }}</h1>
+                <p>{{ restaurant_section.description }}</p>
+                <div class="restaurant-buttons">
+                    <button class="btn px-4 py-2 btn-outline-light restaurant-explore-btn">{{ restaurant_section.button1_text }}</button>
+                    <button class="btn px-4 py-2 restaurant-book-btn">{{ restaurant_section.button2_text }}</button>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="restaurant-images">
+                    <div class="row">
+                        {% if restaurant_section.image1 %}
+                        <div class="col-4">
+                            <img src="{{ restaurant_section.image1.url }}" class="img-fluid restaurant-img" alt="Restaurant Dining" loading="lazy">
+                        </div>
+                        {% endif %}
+                        {% if restaurant_section.image2 %}
+                        <div class="col-4">
+                            <img src="{{ restaurant_section.image2.url }}" class="img-fluid restaurant-img" alt="Restaurant Interior" loading="lazy">
+                        </div>
+                        {% endif %}
+                        {% if restaurant_section.image3 %}
+                        <div class="col-4">
+                            <img src="{{ restaurant_section.image3.url }}" class="img-fluid restaurant-img" alt="Restaurant Food" loading="lazy">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
