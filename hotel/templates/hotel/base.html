@@ -199,194 +199,219 @@
     >
 
     <!-- Navigation with ARIA labels -->
-    <nav
-      id="navbar"
-      class="navbar navbar-expand-lg"
-      role="navigation"
-      aria-label="Main navigation"
+   <nav
+  id="navbar"
+  class="navbar navbar-expand-lg"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="container-fluid">
+    <!-- Brand Logo -->
+    <a
+      class="navbar-brand"
+      href="{% url 'home_with_slug' hotel.slug %}"
+      itemprop="url"
     >
-      <div class="container-fluid">
-        <div class="navbar-left">
-          <ul class="navbar-nav" role="menubar">
-            <li class="nav-item" id="hotels-nav-item" role="none">
-              <a
-                class="nav-link"
-                href="#"
-                role="button"
-                id="hotels-dropdown-toggle"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="fas fa-map-marker-alt me-1" aria-hidden="true"></i>
-                <span>Hotels</span>
+      <h1 class="h3 mb-0" itemprop="name">{{ hotel.name }}</h1>
+      <span class="sr-only">- Luxury Hotel & Resort</span>
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0" role="menubar">
+        <!-- Hotels Dropdown -->
+        <li class="nav-item" id="hotels-nav-item" role="none">
+          <a
+            class="nav-link"
+            href="#"
+            role="button"
+            id="hotels-dropdown-toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fas fa-map-marker-alt me-1" aria-hidden="true"></i>
+            <span>Hotels</span>
+          </a>
+        </li>
+
+        <!-- Home Link -->
+        <li class="nav-item" role="none">
+          <a
+            class="nav-link"
+            href="{% url 'home_with_slug' hotel.slug %}"
+            aria-current="page"
+          >
+            Home
+          </a>
+        </li>
+
+        <!-- Restaurant Dropdown -->
+        <li class="nav-item dropdown" role="none">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="restaurantDropdown"
+          >
+            Restaurant
+          </a>
+          <ul
+            class="dropdown-menu"
+            aria-labelledby="restaurantDropdown"
+            role="menu"
+          >
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-utensils me-2"></i>Fine Dining
               </a>
             </li>
-            <li class="nav-item" role="none">
-              <a
-                class="nav-link"
-                href="{% url 'home_with_slug' hotel.slug %}"
-                aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item dropdown" role="none">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                id="restaurantDropdown"
-              >
-                Restaurant
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-hamburger me-2"></i>Casual Dining
               </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="restaurantDropdown"
-                role="menu"
-              >
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Fine Dining</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Casual Dining</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Room Service</a
-                  >
-                </li>
-              </ul>
+            </li>
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-concierge-bell me-2"></i>Room Service
+              </a>
             </li>
           </ul>
-        </div>
+        </li>
 
-        <!-- Brand Logo with H1 -->
-        <a
-          class="navbar-brand mx-auto"
-          href="{% url 'home_with_slug' hotel.slug %}"
-          itemprop="url"
-        >
-          <h1 class="h3 mb-0" itemprop="name">{{ hotel.name }}</h1>
-          <span class="sr-only">- Luxury Hotel & Resort</span>
-        </a>
-
-        <div class="navbar-right">
-          <ul class="navbar-nav" role="menubar">
-            <li class="nav-item dropdown" role="none">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                id="banquetDropdown"
-              >
-                Banquet
+        <!-- Banquet Dropdown -->
+        <li class="nav-item dropdown" role="none">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="banquetDropdown"
+          >
+            Banquet
+          </a>
+          <ul
+            class="dropdown-menu"
+            aria-labelledby="banquetDropdown"
+            role="menu"
+          >
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-users me-2"></i>Small Hall
               </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="banquetDropdown"
-                role="menu"
-              >
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Small Hall</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Medium Hall</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Grand Hall</a
-                  >
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown" role="none">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                id="weddingDropdown"
-              >
-                Wedding
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-user-friends me-2"></i>Medium Hall
               </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="weddingDropdown"
-                role="menu"
-              >
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Indoor Venue</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Outdoor Venue</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Rooftop Venue</a
-                  >
-                </li>
-              </ul>
             </li>
-            <li class="nav-item dropdown" role="none">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                id="roomsDropdown"
-              >
-                Rooms
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-user-plus me-2"></i>Grand Hall
               </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="roomsDropdown"
-                role="menu"
-              >
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Standard Room</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem"
-                    >Deluxe Room</a
-                  >
-                </li>
-                <li role="none">
-                  <a class="dropdown-item" href="#" role="menuitem">Suite</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item" role="none">
-              <button class="btn px-4 py-2 nav-book-btn" aria-label="Book Now">
-                Book Now
-              </button>
             </li>
           </ul>
-        </div>
+        </li>
+
+        <!-- Wedding Dropdown -->
+        <li class="nav-item dropdown" role="none">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="weddingDropdown"
+          >
+            Wedding
+          </a>
+          <ul
+            class="dropdown-menu"
+            aria-labelledby="weddingDropdown"
+            role="menu"
+          >
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-home me-2"></i>Indoor Venue
+              </a>
+            </li>
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-tree me-2"></i>Outdoor Venue
+              </a>
+            </li>
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-building me-2"></i>Rooftop Venue
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Rooms Dropdown -->
+        <li class="nav-item dropdown" role="none">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            id="roomsDropdown"
+          >
+            Rooms
+          </a>
+          <ul
+            class="dropdown-menu"
+            aria-labelledby="roomsDropdown"
+            role="menu"
+          >
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-bed me-2"></i>Standard Room
+              </a>
+            </li>
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-star me-2"></i>Deluxe Room
+              </a>
+            </li>
+            <li role="none">
+              <a class="dropdown-item" href="#" role="menuitem">
+                <i class="fas fa-crown me-2"></i>Suite
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Book Now Button -->
+      <div class="d-flex">
+        <button class="btn nav-book-btn" aria-label="Book Now">
+          Book Now
+        </button>
       </div>
-    </nav>
+    </div>
+  </div>
+</nav>
 
     <!-- Breadcrumb Navigation -->
 
@@ -1216,6 +1241,30 @@
         });
       });
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Add active class to current page nav item
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('#navbar .nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
+
+
 
     {% block extra_js %}{% endblock %}
   </body>
