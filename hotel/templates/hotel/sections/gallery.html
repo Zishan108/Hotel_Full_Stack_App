@@ -20,9 +20,7 @@
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
           <div class="gallery-mobile-card">
             <img src="{{ card.image.url }}" class="d-block w-100" alt="{{ card.title }}">
-            <div class="carousel-caption">
-              <h5>{{ card.title }}</h5>
-            </div>
+
           </div>
         </div>
         {% endfor %}
