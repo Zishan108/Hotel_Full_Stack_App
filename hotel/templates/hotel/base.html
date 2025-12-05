@@ -232,6 +232,14 @@
     <!-- Collapsible Content -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0" role="menubar">
+
+        
+        <li class="nav-item" role="none">
+          <a href="#" class="nav-link" id="openMenuBtn" aria-label="Menu">
+             Menu
+          </a>
+        </li>
+
         <!-- Hotels Dropdown -->
         <li class="nav-item" id="hotels-nav-item" role="none">
           <a
@@ -242,7 +250,6 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <i class="fas fa-map-marker-alt me-1" aria-hidden="true"></i>
             <span>Hotels</span>
           </a>
         </li>
@@ -294,42 +301,7 @@
           </ul>
         </li>
 
-        <!-- Banquet Dropdown -->
-        <li class="nav-item dropdown" role="none">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            id="banquetDropdown"
-          >
-            Banquet
-          </a>
-          <ul
-            class="dropdown-menu"
-            aria-labelledby="banquetDropdown"
-            role="menu"
-          >
-            <li role="none">
-              <a class="dropdown-item" href="#" role="menuitem">
-                <i class="fas fa-users me-2"></i>Small Hall
-              </a>
-            </li>
-            <li role="none">
-              <a class="dropdown-item" href="#" role="menuitem">
-                <i class="fas fa-user-friends me-2"></i>Medium Hall
-              </a>
-            </li>
-            <li role="none">
-              <a class="dropdown-item" href="#" role="menuitem">
-                <i class="fas fa-user-plus me-2"></i>Grand Hall
-              </a>
-            </li>
-          </ul>
-        </li>
-
+    
         <!-- Wedding Dropdown -->
         <li class="nav-item dropdown" role="none">
           <a
@@ -366,42 +338,10 @@
           </ul>
         </li>
 
-        <!-- Rooms Dropdown -->
-        <li class="nav-item dropdown" role="none">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            id="roomsDropdown"
-          >
-            Rooms
-          </a>
-          <ul
-            class="dropdown-menu"
-            aria-labelledby="roomsDropdown"
-            role="menu"
-          >
-            <li role="none">
-              <a class="dropdown-item" href="#" role="menuitem">
-                <i class="fas fa-bed me-2"></i>Standard Room
-              </a>
-            </li>
-            <li role="none">
-              <a class="dropdown-item" href="#" role="menuitem">
-                <i class="fas fa-star me-2"></i>Deluxe Room
-              </a>
-            </li>
-            <li role="none">
-              <a class="dropdown-item" href="#" role="menuitem">
-                <i class="fas fa-crown me-2"></i>Suite
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      
+        
+
+      <span class="search-icon" style="cursor: text; margin-left: 20px; font-size: 20px;">Search...</span>
 
       <!-- Book Now Button -->
       <div class="d-flex">
@@ -835,6 +775,143 @@
       </div>
     </div>
 
+
+  
+<!-- POPUP MENU STRUCTURE -->
+<div id="popupBackdrop" class="popup-backdrop" role="dialog" aria-hidden="true" aria-labelledby="menuTitle">
+  <div class="popup-container" role="document">
+    <!-- LEFT: Menu with background image -->
+    <aside class="menu-panel" id="leftMenu" aria-hidden="false">
+      <div class="menu-inner">
+        <div class="close-row">
+          <div class="close-icon" id="closeBtn" title="Close" aria-label="Close menu">×</div>
+          <div class="close-label">CLOSE</div>
+        </div>
+
+        <ul class="menu-list" aria-label="Main menu">
+          <li><a href="#" onclick="event.preventDefault()">Our Destinations</a></li>
+          <li><a href="#" onclick="event.preventDefault()">Restaurants</a></li>
+          <li><a href="#" onclick="event.preventDefault()">Contact</a></li>
+          <li><a href="#" onclick="event.preventDefault()">Career</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- RIGHT: Content panel (logo + cards) -->
+    <section class="content-panel" aria-hidden="false">
+      <div class="brand">
+        <img src="{% static 'images/menuImages/ORCHID_MENUPOPUP.jpg' %}" alt="Orchid Hotels logo" width="300" height="100">
+      </div>
+
+      <div class="title">Orchid Hotels - Asia's first Five Star Ecotel hotel</div>
+
+     <div class="cards">
+  <!-- WIDE: Keep in touch (icon left, text right) -->
+  <div class="popup-card popup-wide popup-horizontal">
+    <div class="popup-icon">
+      <img src="{% static 'images/menuImages/location.png' %}" alt="location icon" width="56" height="56">
+    </div>
+    <div class="popup-body">
+      <h4>Keep In Touch?</h4>
+      <p>The Orchid Hotel Mumbai Vile Parle 70-C, Nehru Road, Near Mumbai Domestic Airport, Vile Parle (E), Mumbai - 400099</p>
+    </div>
+  </div>
+
+  <!-- CENTERED: Call Anytime -->
+  <div class="popup-card popup-centered">
+    <div class="popup-icon">
+      <img src="{% static 'images/menuImages/phone.png' %}" alt="phone icon" width="50" height="50">
+    </div>
+    <div class="popup-body">
+      <h4>Call Anytime</h4>
+      <p>+91 916 916 6789</p>
+    </div>
+  </div>
+
+  <!-- CENTERED: Email address -->
+  <div class="popup-card popup-centered">
+    <div class="popup-icon">
+      <img src="{% static 'images/menuImages/message.png' %}" alt="email icon" width="50" height="50">
+    </div>
+    <div class="popup-body">
+      <h4>Email address</h4>
+      <p>reservations@orchidhotel.com</p>
+    </div>
+  </div>
+</div>
+    </section>
+  </div>
+</div>
+
+<!-- Search Popup -->
+<div id="searchPopup" class="search-popup">
+    <div class="search-popup-inner">
+        <span class="close-search" onclick="closeSearch()">X</span>
+        <div class="search-input-wrap">
+            <input type="text" placeholder="Type Location/Brand" class="search-input">
+        </div>
+
+        <div class="search-results">
+            <div class="hotel-slider-wrapper">
+                <div id="hotelSlider" class="hotel-slider">
+                    <div class="hotel-card" data-index="0">
+                        <img src="https://orchidhotel.com/static/website/img/Main-Home-page/Our-Hotel/Ayodhya.webp" alt="Ira by Orchid Ayodhya">
+                        <button class="explore-btn">Explore</button>
+                        <h3>Ira by Orchid Ayodhya</h3>
+                        <p>Ayodhya, Uttar Pradesh</p>
+                    </div>
+                    <div class="hotel-card" data-index="1">
+                        <img src="https://orchidhotel.com/static/website/img/Main-Home-page/Our-Hotel/Murud.webp" alt="Lotus an Eco Beach Resort">
+                        <button class="explore-btn">Explore</button>
+                        <h3>Lotus an Eco Beach Resort</h3>
+                        <p>Dapoli, Maharashtra</p>
+                    </div>
+                    <div class="hotel-card" data-index="2">
+                        <img src="https://orchidhotel.com/static/website/img/Main-Home-page/Our-Hotel/Orchid-Goa-Passaros.webp" alt="Orchid Passaros Resort">
+                        <button class="explore-btn">Explore</button>
+                        <h3>Orchid Passaros Resort</h3>
+                        <p>Benaulim, Goa</p>
+                    </div>
+                    <div class="hotel-card" data-index="3">
+                        <img src="https://orchidhotel.com/static/website/img/Main-Home-page/Our-Hotel/Orchid-Pune.webp" alt="IRA by Orchid Porvorim">
+                        <button class="explore-btn">Explore</button>
+                        <h3>IRA by Orchid Porvorim</h3>
+                        <p>Porvorim, Goa</p>
+                    </div>
+                    <div class="hotel-card" data-index="4">
+                        <img src="https://orchidhotel.com/static/website/img/bhubaneswar.webp" alt="Ira by Orchid Bhubaneswar">
+                        <button class="explore-btn">Explore</button>
+                        <h3>Ira by Orchid Bhubaneswar</h3>
+                        <p>Bhubaneswar, Odisha</p>
+                    </div>
+                    <div class="hotel-card" data-index="5">
+                        <img src="https://orchidhotel.com/static/website/img/Jamnagar.webp" alt="Orchid Hotel Jamnagar">
+                        <button class="explore-btn">Explore</button>
+                        <h3>Orchid Hotel Jamnagar</h3>
+                        <p>Jamnagar, Gujarat</p>
+                    </div>
+                    <div class="hotel-card" data-index="6">
+                        <img src="https://orchidhotel.com/static/website/img/Konark.webp" alt="Lotus Eco Beach Resort Konark">
+                        <button class="explore-btn">Explore</button>
+                        <h3>Lotus Eco Beach Resort Konark</h3>
+                        <p>Konark, Odisha</p>
+                    </div>
+                </div>
+                <!-- DOTS (Your Perfect Design) -->
+                <div class="slider-tabs">
+                    <span class="tab-dot active" data-index="0"></span>
+                    <span class="tab-dot" data-index="1"></span>
+                    <span class="tab-dot" data-index="2"></span>
+                    <span class="tab-dot" data-index="3"></span>
+                    <span class="tab-dot" data-index="4"></span>
+                    <span class="tab-dot" data-index="5"></span>
+                    <span class="tab-dot" data-index="6"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- External Scripts -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -1262,8 +1339,256 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ======================
+    // POPUP MENU FUNCTIONALITY - FIXED
+    // ======================
+    (function() {
+        // Wait a bit to ensure DOM is fully ready
+        setTimeout(function() {
+            const backdrop = document.getElementById('popupBackdrop');
+            if(!backdrop) {
+                console.error('Popup backdrop element not found');
+                return;
+            }
+
+            const container = backdrop.querySelector('.popup-container') || backdrop;
+            const openBtn = document.getElementById('openMenuBtn');
+            const closeBtn = backdrop.querySelector('.close-icon');
+
+            // Debug logging
+            console.log('Popup elements:', { backdrop, openBtn, closeBtn });
+
+            // Ensure backdrop is hidden initially
+            backdrop.style.display = 'none';
+            backdrop.setAttribute('aria-hidden', 'true');
+
+            function reflow(el) { 
+                void el.offsetWidth; 
+            }
+
+            // OPEN: show backdrop with animation
+            function openMenu(e) {
+                if (e) e.preventDefault();
+                console.log('Opening menu');
+                
+                backdrop.style.display = 'flex';
+                backdrop.classList.remove('anim-out', 'fast-hide');
+                backdrop.classList.add('visible');
+                
+                reflow(backdrop);
+                backdrop.classList.add('anim-in');
+                backdrop.setAttribute('aria-hidden', 'false');
+                
+                // Disable scrolling on body
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // CLOSE: hide backdrop with animation
+            function closeMenu(e) {
+                if (e) e.preventDefault();
+                console.log('Closing menu');
+                
+                backdrop.classList.remove('anim-in');
+                reflow(backdrop);
+                backdrop.classList.add('anim-out');
+                container.classList.add('fast-hide');
+
+                const HIDE_DELAY = 260;
+                setTimeout(() => {
+                    backdrop.classList.remove('visible', 'anim-out', 'anim-in');
+                    container.classList.remove('fast-hide');
+                    backdrop.setAttribute('aria-hidden', 'true');
+                    backdrop.style.display = 'none';
+                    
+                    // Re-enable scrolling
+                    document.documentElement.style.overflow = '';
+                    document.body.style.overflow = '';
+                }, HIDE_DELAY);
+            }
+
+            // Wire up event listeners
+            if (openBtn) {
+                openBtn.addEventListener('click', openMenu);
+                console.log('Added click listener to open button');
+            } else {
+                console.error('Open button not found');
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeMenu);
+            }
+
+            // Close when clicking outside container
+            backdrop.addEventListener('click', function(e) {
+                if(e.target === backdrop) {
+                    closeMenu(e);
+                }
+            });
+
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if(e.key === 'Escape' && backdrop.classList.contains('visible')) {
+                    closeMenu(e);
+                }
+            });
+
+            // Expose functions globally if needed
+            window.openFullMenu = openMenu;
+            window.closeFullMenu = closeMenu;
+            
+        }, 100); // Small delay to ensure DOM is ready
+    })();
+
+    // ======================
+    // NAVBAR SCROLL EFFECT
+    // ======================
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Add active class to current page nav item
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('#navbar .nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    }
+});
+
+
 </script>
 
+<script>
+  const toggleBtn = document.getElementById("toggleAmenities");
+  const extraItems = document.querySelectorAll(".extra-amenity");
+  let expanded = false;
+  toggleBtn.addEventListener("click", () => {
+    expanded = !expanded;
+    extraItems.forEach((item) => {
+      item.style.display = expanded ? "flex" : "none";
+    });
+    toggleBtn.textContent = expanded
+      ? "View Less Amenities"
+      : "View More Amenities";
+  });
+</script>
+
+<script>
+// Search Popup Functionality
+document.addEventListener("DOMContentLoaded", function() {
+    const searchIcon = document.querySelector(".search-icon");
+    const searchPopup = document.getElementById("searchPopup");
+    const closeSearchBtn = document.querySelector(".close-search");
+    const searchInput = document.querySelector(".search-input");
+    
+    // Open search popup
+    if (searchIcon) {
+        searchIcon.addEventListener("click", () => {
+            searchPopup.classList.add("active");
+            searchInput.focus();
+        });
+    }
+    
+    // Close search popup
+    window.closeSearch = function() {
+        searchPopup.classList.remove("active");
+    };
+    
+    if (closeSearchBtn) {
+        closeSearchBtn.addEventListener("click", closeSearch);
+    }
+    
+    // Close search when clicking outside
+    searchPopup.addEventListener("click", (e) => {
+        if (e.target === searchPopup) {
+            closeSearch();
+        }
+    });
+    
+    // Close search with Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && searchPopup.classList.contains("active")) {
+            closeSearch();
+        }
+    });
+    
+    /* SLIDER DOT → CARD INDEX SCROLL */
+    const slider = document.getElementById("hotelSlider");
+    const dots = document.querySelectorAll(".tab-dot");
+    
+    function scrollToCard(index) {
+        const card = slider.querySelector(`.hotel-card[data-index="${index}"]`);
+        if (card) {
+            slider.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+        }
+    }
+    
+    dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+            const index = dot.dataset.index;
+            scrollToCard(index);
+            dots.forEach(d => d.classList.remove("active"));
+            dot.classList.add("active");
+        });
+    });
+    
+    if (slider) {
+        slider.addEventListener("scroll", () => {
+            let closestIndex = 0;
+            let closestDist = Infinity;
+            
+            slider.querySelectorAll(".hotel-card").forEach(card => {
+                const dist = Math.abs(card.offsetLeft - slider.scrollLeft);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closestIndex = parseInt(card.dataset.index);
+                }
+            });
+            
+            dots.forEach(d => d.classList.toggle("active", parseInt(d.dataset.index) === closestIndex));
+        });
+    }
+    
+    // Add click handlers for explore buttons
+    document.querySelectorAll('.explore-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const hotelName = this.parentElement.querySelector('h3').textContent;
+            alert(`Exploring: ${hotelName}`);
+            // You can replace this with actual navigation logic
+        });
+    });
+    
+    // Search input functionality (basic)
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const hotelCards = document.querySelectorAll('.hotel-card');
+            
+            hotelCards.forEach(card => {
+                const hotelName = card.querySelector('h3').textContent.toLowerCase();
+                const location = card.querySelector('p').textContent.toLowerCase();
+                
+                if (hotelName.includes(searchTerm) || location.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
+});
+</script>
 
 
     {% block extra_js %}{% endblock %}

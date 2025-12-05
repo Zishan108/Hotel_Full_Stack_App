@@ -1,40 +1,234 @@
+{% extends 'hotel/base.html' %} {% block content %}
+<!-- Carousel Section -->
+{% include 'hotel/sections/carousel.html' %}
 
-{% extends 'hotel/base.html' %}
+<!-- Main Info Section -->
+{% include 'hotel/sections/main_info.html' %}
 
-{% block content %}
-    <!-- Carousel Section -->
-    {% include 'hotel/sections/carousel.html' %}
+<!-- General Cards Section -->
+{% include 'hotel/sections/general_cards.html' %}
 
-    <!-- Main Info Section -->
-    {% include 'hotel/sections/main_info.html' %}
+<!-- Gallery Section -->
+{% include 'hotel/sections/gallery.html' %}
 
-    <!-- General Cards Section -->
-    {% include 'hotel/sections/general_cards.html' %}
+<!-- Rooms and Suites Section -->
+{% include 'hotel/sections/rooms_and_suites.html' %}
 
-    <!-- Gallery Section -->
-    {% include 'hotel/sections/gallery.html' %}
+<!-- Wedding Venues Section -->
+{% include 'hotel/sections/wedding.html' %}
 
-    <!-- Rooms and Suites Section -->
-    {% include 'hotel/sections/rooms_and_suites.html' %}
+<!-- Banquet Halls Section -->
+{% include 'hotel/sections/banquet.html' %}
 
-    <!-- Wedding Venues Section -->
-    {% include 'hotel/sections/wedding.html' %}
+<!-- Restaurant Section -->
+{% include 'hotel/sections/restaurant.html' %}
 
-    <!-- Banquet Halls Section -->
-    {% include 'hotel/sections/banquet.html' %}
+<!-- Special Offers Section -->
+{% include 'hotel/sections/special_offers.html' %}
 
-    <!-- Restaurant Section -->
-    {% include 'hotel/sections/restaurant.html' %}
+<!-- FAQ Section -->
+{% include 'hotel/sections/faq.html' %}
 
-    <!-- Special Offers Section -->
-    {% include 'hotel/sections/special_offers.html' %}
+<div class="page-container">
+  <h1 class="page-title">Premier Room</h1>
+  <!-- IMAGE GRID -->
+  <div class="images-wrapper">
+    <div class="left-large">
+      <img
+        src="https://www.orchidhotel.com/static/website/img/mumbai-vile-
+parle/premier-room/premier-king-room-in-mumbai-1.webp"
+        alt=""
+      />
+    </div>
+    <div class="right-grid">
+      <img
+        src="https://www.orchidhotel.com/static/website/img/mumbai-vile-
+parle/premier-room/premier-king-room-in-mumbai-2.webp"
+        alt=""
+      />
 
-    <!-- FAQ Section -->
-    {% include 'hotel/sections/faq.html' %}
+      <img
+        src="https://www.orchidhotel.com/static/website/img/mumbai-vile-
+parle/premier-room/premier-king-room-in-mumbai-3.webp"
+        alt=""
+      />
 
-    <!-- Luxury Dining In Mumbai Section -->
-    {% include 'hotel/sections/luxury_dining.html' %}
+      <img
+        src="https://www.orchidhotel.com/static/website/img/mumbai-vile-
+parle/premier-room/premier-king-room-in-mumbai-4.webp"
+        alt=""
+      />
 
-    <!-- Blogs Section -->
-    {% include 'hotel/sections/blogs.html' %}
-{% endblock %}
+      <img
+        src="https://www.orchidhotel.com/static/website/img/mumbai-vile-
+parle/premier-room/premier-king-room-in-mumbai-5.webp"
+        alt=""
+      />
+    </div>
+  </div>
+  <!-- ABOUT -->
+  <div class="about-section">
+    <h2>About accommodation</h2>
+    <p>
+      Settle into an elevated city escape with our Premier Rooms at Orchid Hotel
+      Vile Parle, where comfort meets modern luxury just moments from Mumbai’s
+      international airport. These rooms near the airport are a perfect match
+      for guests flying in for business or relaxing getaways.
+    </p>
+
+    <p>
+      Designed with convenience in mind, each premiere room features a king-
+      size bed or twin beds with ultra-soft 10-inch mattresses and crisp
+      300-thread- count linen for deep, uninterrupted sleep. Whether you're
+      planning meetings or winding down after a long day, the ergonomic work
+      desk with fast Wi-Fi and multiple charging points keeps you well-equipped
+      throughout your stay.
+    </p>
+    <p>
+      Unwind with in-room entertainment on a flat-screen TV loaded with premium
+      channels, or enjoy a fresh brew with our tea and coffee-making facilities.
+      A dedicated seating area with an armchair and centre table invites you to
+      relax, read, or catch up with friends. Rejuvenate in the spacious, marble-
+      clad bathroom with a separate shower and indulgent bathtub, enhanced by
+      high- quality amenities. Among the most sought-after hotel rooms near
+      Chhatrapati Shivaji Airport Mumbai, this room near the airport brings
+      together seamless access and five-star elegance. Whether you’re booking a
+      short transit stop or a longer retreat in Mumbai, our Premier Room offers
+      a blend of quiet comfort, smart features, and exceptional value near Vile
+      Parle East.
+    </p>
+  </div>
+  <!-- AMENITIES -->
+  <div class="amenities-section">
+    <h2>Room Amenities</h2>
+    <div class="amenities-grid">
+      <!-- VISIBLE ROWS -->
+
+      <div class="amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/9567/9567116.png"
+        />
+        Twin/King size bed
+      </div>
+
+      <div class="amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/9300/9300937.png"
+        />
+        Cupboard and storage space
+      </div>
+
+      <div class="amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/159/159599.png"
+        />
+        WiFi Internet Access
+      </div>
+
+      <div class="amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/7613/7613995.png"
+        />
+        Work desk and chair
+      </div>
+
+      <div class="amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/17391/17391720.png"
+        />
+        Interactive Flat screen TV
+      </div>
+
+      <div class="amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/9833/9833417.png"
+        />
+        Premium eco-friendly toiletries
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/10393/10393937.png"
+        />
+        Refrigerated mini bar
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/3371/3371979.png"
+        />
+        Laundry & dry cleaning services
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/996/996289.png"
+        />
+        Tea and Coffee maker
+      </div>
+
+      <!-- THESE WILL BE TOGGLED -->
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/2733/2733361.png"
+        />
+        Eco-filtered water bottles
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/834/834009.png"
+        />
+        24 hour room service
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/5537/5537788.png"
+        />
+        Iron and Iron Board
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/16903/16903365.png"
+        />
+        In-Room Safe
+      </div>
+
+      <div class="extra-amenity">
+        <img
+          src="https://cdn-icons-
+png.flaticon.com/128/5900/5900015.png"
+        />
+        Bathroom slippers
+      </div>
+    </div>
+    <p id="toggleAmenities" class="toggle-btn">View More Amenities</p>
+    <div class="center-btn">
+      <button class="book-btn">BOOK YOUR STAY NOW</button>
+    </div>
+  </div>
+</div>
+<br> <br>
+<hr>
+
+<!-- Luxury Dining In Mumbai Section -->
+{% include 'hotel/sections/luxury_dining.html' %}
+
+<!-- Blogs Section -->
+{% include 'hotel/sections/blogs.html' %} {% endblock %}

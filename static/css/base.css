@@ -4551,3 +4551,1190 @@ html {
 }
 
 
+/* ===== POPUP MENU STYLES ===== */
+:root {
+  --panel-bg: #f7d9c0; /* peach for right panel */
+  --menu-width: 48%;    /* left image panel width on large screens */
+  --panel-width: 52%;   /* right panel width on large screens */
+  --overlay: rgba(0,0,0,0.45);
+  --ease: cubic-bezier(.2,.9,.2,1);
+  --max-mobile-menu-width: 320px;
+}
+
+/* POPUP WRAPPER (backdrop + sliding container) */
+.popup-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none; /* show via .visible */
+  z-index: 9999;
+  align-items: stretch;
+  justify-content: center;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(0,0,0,0.22);
+}
+
+/* visible state */
+.popup-backdrop.visible { 
+  display: flex; 
+}
+
+/* sliding container that holds left menu + right content */
+.popup-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(10,10,10,0.25);
+  transform: translateY(8px) scale(0.995);
+  opacity: 0;
+  transition: transform 320ms var(--ease), opacity 320ms var(--ease);
+  padding: 0%;
+}
+
+/* when backdrop gets visible, animate container in */
+.popup-backdrop.visible .popup-container {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* quick hide state for immediate closing (fast exit) */
+.popup-container.fast-hide {
+  transition: transform 200ms ease, opacity 160ms ease;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* LEFT IMAGE PANEL */
+.menu-panel {
+  width: 700px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding-left: clamp(32px, 6vw, 72px);
+  padding-right: 36px;
+  display: flex;
+  align-items: flex-start !important;
+  padding-top: 40px !important;
+  padding-bottom: 0 !important;
+  opacity: 1;
+}
+
+/* dark overlay to increase contrast for text */
+.menu-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+  z-index: 0;
+}
+
+/* menu content sits above the overlay */
+.menu-panel .menu-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* close button */
+.close-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.close-icon {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.close-icon:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.1);
+}
+
+/* "CLOSE" label */
+.close-label { 
+  letter-spacing: 1px; 
+  font-weight: 600; 
+}
+
+/* Big menu items */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.menu-list li {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(10px, 5vw, 28px);
+  line-height: 0.95;
+  margin: 18px 0;
+}
+
+/* links style */
+.menu-list a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 0;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.menu-list a:hover { 
+  transform: translateX(6px); 
+  opacity: 0.95; 
+}
+
+/* RIGHT CONTENT PANEL */
+.content-panel {
+  max-width: 100%;
+  background-color: #fadbbb;
+  padding: clamp(28px, 4vw, 48px);
+  overflow: auto;
+}
+
+/* logo & title area */
+.brand {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.brand img {
+  max-width: 300px; 
+  display: block;
+  margin: 0 auto 10px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.title {
+  font-size: clamp(10px, 3.6vw, 30px);
+  font-weight: 600;
+  color: #242321;
+  margin: 8px 0 18px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* contact card styles (grid) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 12px;
+}
+
+/* wide card spans both columns */
+.info-wide { 
+  grid-column: 1 / -1; 
+}
+
+/* base card styling */
+.card-menu {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-height: 110px;
+}
+
+/* icon wrapper */
+.card-icon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* img inside icon */
+.card-icon img {
+  max-width: 80px;
+  max-height: 80px;
+  display: block;
+}
+
+/* body text */
+.card-body h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #242321;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.card-body p {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Horizontal wide card (icon left, text right) */
+.card-horizontal {
+  text-align: left;
+  align-items: center;
+}
+
+/* make the icon slightly larger in the horizontal card */
+.card-horizontal .card-icon {
+  width: 84px;
+  height: 84px;
+  flex: 0 0 84px;
+}
+
+.card-horizontal .card-icon img { 
+  max-width: 56px; 
+  max-height: 56px; 
+}
+
+/* Centered small cards (icon above text) */
+.card-centered {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 22px 16px;
+  gap: 12px;
+  min-height: 150px;
+}
+
+.card-centered .card-icon {
+  width: 86px;
+  height: 86px;
+  flex: 0 0 auto;
+}
+
+.card-centered .card-icon img { 
+  max-width: 50px; 
+  max-height: 50px; 
+}
+
+.card-centered .card-body h4 {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+/* Animation for menu items and cards */
+.menu-list li,
+.content-panel .brand,
+.content-panel .title,
+.content-panel .card {
+  transform: translateY(-18px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* slide-in keyframes (shorter, snappier) */
+@keyframes slideDownFast {
+  from { transform: translateY(-18px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideUpFast {
+  from { transform: translateY(0); opacity: 1; }
+  to   { transform: translateY(-18px); opacity: 0; }
+}
+
+/* when backdrop gets anim-in, play staggered reveal quickly */
+.popup-backdrop.anim-in .menu-list li {
+  animation: slideDownFast 260ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+.popup-backdrop.anim-in .menu-list li:nth-child(1){ animation-delay: 0.06s; }
+.popup-backdrop.anim-in .menu-list li:nth-child(2){ animation-delay: 0.12s; }
+.popup-backdrop.anim-in .menu-list li:nth-child(3){ animation-delay: 0.18s; }
+.popup-backdrop.anim-in .menu-list li:nth-child(4){ animation-delay: 0.24s; }
+
+/* right panel quick stagger */
+.popup-backdrop.anim-in .content-panel .brand { animation: slideDownFast 260ms both 0.08s; }
+.popup-backdrop.anim-in .content-panel .title { animation: slideDownFast 260ms both 0.14s; }
+.popup-backdrop.anim-in .content-panel .card.info-wide { animation: slideDownFast 260ms both 0.20s; }
+.popup-backdrop.anim-in .content-panel .card.card-centered:nth-of-type(2) { animation: slideDownFast 260ms both 0.26s; }
+.popup-backdrop.anim-in .content-panel .card.card-centered:nth-of-type(3) { animation: slideDownFast 260ms both 0.32s; }
+
+/* anim-out quick (reverse) */
+.popup-backdrop.anim-out .menu-list li {
+  animation: slideUpFast 200ms ease both;
+}
+
+.popup-backdrop.anim-out .menu-list li:nth-child(1){ animation-delay: 0.18s; }
+.popup-backdrop.anim-out .menu-list li:nth-child(2){ animation-delay: 0.12s; }
+.popup-backdrop.anim-out .menu-list li:nth-child(3){ animation-delay: 0.06s; }
+.popup-backdrop.anim-out .menu-list li:nth-child(4){ animation-delay: 0s; }
+
+.popup-backdrop.anim-out .content-panel .card.card-centered:nth-of-type(3) { animation: slideUpFast 200ms both 0.02s; }
+.popup-backdrop.anim-out .content-panel .card.card-centered:nth-of-type(2) { animation: slideUpFast 200ms both 0.06s; }
+.popup-backdrop.anim-out .content-panel .card.info-wide { animation: slideUpFast 200ms both 0.10s; }
+.popup-backdrop.anim-out .content-panel .title { animation: slideUpFast 200ms both 0.14s; }
+.popup-backdrop.anim-out .content-panel .brand { animation: slideUpFast 200ms both 0.18s; }
+
+/* safety: when popup not visible keep children hidden */
+.popup-backdrop:not(.visible) .menu-list li,
+.popup-backdrop:not(.visible) .content-panel .brand,
+.popup-backdrop:not(.visible) .content-panel .title,
+.popup-backdrop:not(.visible) .content-panel .card {
+  transform: translateY(-18px);
+  opacity: 0;
+}
+
+/* RESPONSIVE: on small screens stack vertically and make menu full-width */
+@media (max-width: 900px) {
+  .popup-container {
+    flex-direction: column;
+    width: min(100%, calc(100% - 24px));
+    max-height: 100vh;
+  }
+  
+  .menu-panel { 
+    padding-left: 18px; 
+    padding-right: 18px; 
+    min-height: 42vh; 
+    width: 100%;
+  }
+  
+  .content-panel { 
+    padding: 18px; 
+    max-width: 100%;
+  }
+  
+  .cards { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* small devices: make the menu items slightly smaller */
+@media (max-width: 480px) {
+  .menu-list li { 
+    font-size: clamp(20px, 9vw, 36px); 
+  }
+  
+  .brand img {
+    max-width: 200px;
+    height: 80px;
+  }
+  
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Add some styles for the navbar menu button */
+#navbar #openMenuBtn {
+  display: flex;
+  align-items: center;
+}
+
+/* Fix for popup menu scrollbar and image */
+.popup-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+  align-items: stretch;
+  justify-content: center;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.popup-backdrop.visible {
+  display: flex;
+}
+
+/* Remove fixed width and use viewport units */
+.popup-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  transform: translateY(8px) scale(0.995);
+  opacity: 0;
+  transition: transform 320ms cubic-bezier(.2, .9, .2, 1), 
+              opacity 320ms cubic-bezier(.2, .9, .2, 1);
+  margin: 0;
+  padding: 0;
+}
+
+.popup-backdrop.visible .popup-container {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Fix left menu panel - ADD BACKGROUND IMAGE HERE */
+.menu-panel {
+  flex: 0 0 48%;
+  position: relative;
+  background-image: url('../images/menuImages/menuFullScreen.jpg'); /* Add your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 40px 36px 40px clamp(32px, 6vw, 72px);
+  overflow: hidden;
+}
+
+/* Dark overlay for better text readability */
+.menu-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.menu-panel .menu-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* Fix right content panel */
+.content-panel {
+  flex: 1;
+  background-color: #fadbbb;
+  padding: clamp(28px, 4vw, 48px);
+  overflow-y: auto;
+  min-width: 0; /* Prevent overflow */
+}
+
+/* Fix cards layout */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 12px;
+  max-width: 100%;
+}
+
+.info-wide {
+  grid-column: 1 / -1;
+}
+
+/* Remove horizontal scrollbar */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 900px) {
+  .popup-container {
+    flex-direction: column;
+    width: 100%;
+    max-height: 100vh;
+  }
+  
+  .menu-panel {
+    flex: 0 0 40vh;
+    width: 100%;
+    padding: 30px 20px;
+  }
+  
+  .content-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-panel {
+    flex: 0 0 35vh;
+    padding: 20px 15px;
+  }
+  
+  .content-panel {
+    padding: 15px;
+  }
+  
+  .brand img {
+    max-width: 200px;
+    height: 70px;
+  }
+}
+
+
+/* ===== POPUP MENU CARD STYLES (Renamed to avoid Bootstrap conflict) ===== */
+
+/* Base popup card styling */
+.popup-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    min-height: 110px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popup-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(10,10,10,0.1);
+}
+
+/* Popup icon wrapper */
+.popup-icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* img inside icon */
+.popup-icon img {
+    max-width: 80px;
+    max-height: 80px;
+    display: block;
+}
+
+/* Body text */
+.popup-body h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #242321;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.popup-body p {
+    margin: 0;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+/* Horizontal wide card (icon left, text right) */
+.popup-horizontal {
+    text-align: left;
+    align-items: center;
+}
+
+/* Make the icon slightly larger in the horizontal card */
+.popup-horizontal .popup-icon {
+    width: 84px;
+    height: 84px;
+    flex: 0 0 84px;
+}
+
+.popup-horizontal .popup-icon img { 
+    max-width: 56px; 
+    max-height: 56px; 
+}
+
+/* Centered small cards (icon above text) */
+.popup-centered {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 22px 16px;
+    gap: 12px;
+    min-height: 150px;
+}
+
+.popup-centered .popup-icon {
+    width: 86px;
+    height: 86px;
+    flex: 0 0 auto;
+}
+
+.popup-centered .popup-icon img { 
+    max-width: 50px; 
+    max-height: 50px; 
+}
+
+.popup-centered .popup-body h4 {
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+/* Wide card spans both columns */
+.popup-wide { 
+    grid-column: 1 / -1; 
+}
+
+/* Animation for popup cards */
+.popup-backdrop.anim-in .content-panel .popup-card.popup-wide { 
+    animation: slideDownFast 260ms both 0.20s; 
+}
+.popup-backdrop.anim-in .content-panel .popup-card.popup-centered:nth-of-type(2) { 
+    animation: slideDownFast 260ms both 0.26s; 
+}
+.popup-backdrop.anim-in .content-panel .popup-card.popup-centered:nth-of-type(3) { 
+    animation: slideDownFast 260ms both 0.32s; 
+}
+
+.popup-backdrop.anim-out .content-panel .popup-card.popup-centered:nth-of-type(3) { 
+    animation: slideUpFast 200ms both 0.02s; 
+}
+.popup-backdrop.anim-out .content-panel .popup-card.popup-centered:nth-of-type(2) { 
+    animation: slideUpFast 200ms both 0.06s; 
+}
+.popup-backdrop.anim-out .content-panel .popup-card.popup-wide { 
+    animation: slideUpFast 200ms both 0.10s; 
+}
+
+
+/* Premier Room */
+
+  .page-container {
+    width: 86%;
+    max-width: 1350px;
+    margin: auto;
+    padding-top: 40px;
+  }
+  .page-title {
+    font-family: "Cormorant Garamond";
+    font-size: 59.7333px;
+    font-weight: 500;
+    line-height: 71.68px;
+    color: rgb(69, 68, 63);
+  }
+  /* IMAGES */
+  .images-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+  .left-large img {
+    width: 100%;
+    height: 556px;
+  }
+  .left-large {
+    flex: 1.4;
+  }
+  .right-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .right-grid img {
+    width: 100%;
+  }
+  /* ABOUT */
+  .about-section {
+    margin-top: 40px;
+    line-height: 1.7;
+  }
+  .about-section h2 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  .about-section p {
+    font-family: "Cormorant Garamond";
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 25.5px;
+    color: rgb(69, 68, 63);
+  }
+
+  /* AMENITIES */
+
+  .amenities-section {
+    margin-top: 50px;
+  }
+  .amenities-section h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 25px;
+  }
+  .amenity,
+  .extra-amenity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+  }
+  .amenity img,
+  .extra-amenity img {
+    width: 22px;
+    opacity: 0.9;
+  }
+  /* Toggle hidden */
+  .extra-amenity {
+    display: none;
+  }
+  /* Toggle Button */
+  .toggle-btn {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 15px;
+    color: #03328c;
+    cursor: pointer;
+    padding-top: 2rem;
+  }
+  /* Book button */
+
+  .center-btn {
+    text-align: center;
+  }
+  .book-btn {
+    margin-top: 30px;
+    padding: 14px 35px;
+    background: #05073c;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  .book-btn:hover {
+    background: #072059;
+  }
+  /* FULLY RESPONSIVE FIX */
+  /* TABLET (max-width: 950px) */
+  @media (max-width: 950px) {
+    .images-wrapper {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .left-large img {
+      height: auto;
+    }
+    .right-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .amenities-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px 20px;
+    }
+    .page-title {
+      font-size: 42px;
+      line-height: 52px;
+    }
+  }
+  /* MOBILE (max-width: 600px) */
+  @media (max-width: 600px) {
+    .page-container {
+      width: 92%;
+      padding-top: 20px;
+    }
+    .page-title {
+      font-size: 34px;
+      line-height: 42px;
+    }
+    .images-wrapper {
+      flex-direction: column;
+    }
+    .left-large img {
+      width: 100%;
+      height: auto;
+    }
+    .right-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    /* Amenities - single column */
+    .amenities-grid {
+      grid-template-columns: 1fr;
+    }
+    .amenity,
+    .extra-amenity {
+      font-size: 16px;
+    }
+    .toggle-btn {
+      font-size: 14px;
+    }
+
+    .book-btn {
+      width: 100%;
+      font-size: 15px;
+      padding: 12px;
+    }
+  }
+
+
+  /* ========================
+   SEARCH POPUP STYLES
+   ======================== */
+
+/* Search Icon in Navbar */
+.search-icon {
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 20px;
+    color: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* Search Popup */
+.search-popup {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 97%;
+    background: #fff;
+    z-index: 1000000;
+    transition: top .6s ease;
+    overflow: hidden !important;
+}
+
+.search-popup.active {
+    top: 0;
+}
+
+.search-popup-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
+}
+
+.close-search {
+    position: absolute;
+    top: 30px;
+    right: 55px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+    z-index: 1000001;
+}
+
+.close-search:hover {
+    color: #5a1f5a;
+}
+
+.search-input-wrap {
+    width: 100%;
+    padding: 0 70px;
+    margin-bottom: 25px;
+    flex: 0 0 auto;
+}
+
+.search-input {
+    width: 100%;
+    font-size: 18px;
+    padding: 2px 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    background: transparent;
+    border-radius: 0;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
+
+.search-input::placeholder {
+    font-weight: 700;
+    color: #000;
+}
+
+.search-input:focus {
+    border-bottom: 1px solid #000;
+}
+
+.search-popup-inner .search-input {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.search-results {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* HOTEL SLIDER */
+.hotel-slider-wrapper {
+    flex: 1 1 auto !important;
+}
+
+.hotel-slider {
+    display: flex;
+    gap: 12px;
+    padding: 20px 60px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-behavior: smooth;
+}
+
+.hotel-slider::-webkit-scrollbar {
+    height: 0px;
+}
+
+@media (max-width: 768px) {
+    .hotel-slider::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .hotel-slider::-webkit-scrollbar-thumb {
+        background: #bbb;
+        border-radius: 10px;
+    }
+    
+    .hotel-slider::-webkit-scrollbar-track {
+        background: #eee;
+    }
+}
+
+/* DESKTOP SCROLLBAR */
+@media (min-width: 1025px) {
+    .hotel-slider::-webkit-scrollbar {
+        height: 8px !important;
+    }
+    
+    .hotel-slider::-webkit-scrollbar-thumb {
+        background: #bfbfbf !important;
+        border-radius: 10px;
+    }
+    
+    .hotel-slider::-webkit-scrollbar-thumb:hover {
+        background: #a5a5a5 !important;
+    }
+    
+    .hotel-slider::-webkit-scrollbar-track {
+        background: #f1f1f1 !important;
+        border-radius: 10px;
+    }
+    
+    .hotel-slider {
+        scrollbar-width: thin;
+        scrollbar-color: #bfbfbf #f1f1f1;
+    }
+}
+
+/* HOTEL CARD */
+.hotel-card {
+    min-width: calc((100% - 3*26px) / 4);
+    flex: 0 0 auto;
+    text-align: center;
+    padding-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hotel-card img {
+    width: 250px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1.5px solid #000;
+    transition: 0.4s ease-in-out;
+}
+
+.hotel-card h3,
+.hotel-card p {
+    display: block !important;
+    margin-left: 5px;
+}
+
+.hotel-card h3 {
+    font-size: 20px;
+    margin: 12px 0 6px;
+    color: #45443f;
+    font-weight: 100;
+    text-align: left;
+}
+
+.hotel-card p {
+    color: #000;
+    font-size: 14px;
+    text-align: left;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* EXPLORE BUTTON */
+.explore-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 8px;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(4px);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #b52c68;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.hotel-card:hover .explore-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.explore-btn:hover {
+    background: #b52c68 !important;
+    color: #fff !important;
+}
+
+/* DOTS */
+.slider-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 0;
+    overflow-x: auto !important;
+    white-space: nowrap;
+}
+
+@media (min-width: 1025px) {
+    .slider-tabs::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .slider-tabs::-webkit-scrollbar-thumb {
+        background: #bfbfbf;
+        border-radius: 10px;
+    }
+    
+    .slider-tabs::-webkit-scrollbar-thumb:hover {
+        background: #a5a5a5;
+    }
+    
+    .slider-tabs::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .slider-tabs {
+        scrollbar-width: thin;
+        scrollbar-color: #bfbfbf transparent;
+    }
+}
+
+.tab-dot {
+    width: 7px;
+    height: 7px;
+    background: #d3d3d3;
+    border-radius: 70%;
+    cursor: pointer;
+    margin: 20px;
+    transition: 0.25s ease;
+}
+
+.tab-dot.active {
+    width: 14px;
+    height: 14px;
+    background: transparent;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: 7px;
+    position: relative;
+}
+
+.tab-dot.active::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tab-dot:hover:not(.active) {
+    background: #aaa;
+}
+
+/* Responsive adjustments for search popup */
+@media (max-width: 768px) {
+    .search-popup-inner {
+        padding: 20px;
+    }
+    
+    .close-search {
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+    }
+    
+    .search-input-wrap {
+        padding: 0 20px;
+        margin-bottom: 15px;
+    }
+    
+    .hotel-slider {
+        padding: 10px 20px;
+        gap: 8px;
+    }
+    
+    .hotel-card {
+        min-width: 80%;
+    }
+    
+    .hotel-card img {
+        width: 200px;
+        height: 280px;
+    }
+    
+    .hotel-card h3 {
+        font-size: 16px;
+    }
+    
+    .hotel-card p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-popup {
+        height: 100%;
+    }
+    
+    .hotel-card img {
+        width: 180px;
+        height: 250px;
+    }
+    
+    .slider-tabs {
+        gap: 5px;
+    }
+    
+    .tab-dot {
+        margin: 10px 5px;
+    }
+}
+
+
